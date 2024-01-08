@@ -1,0 +1,137 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+public class FlightBookingSystem {
+    public static void main(String[] args) {
+
+        JFrame frame= new JFrame("Flight Booking System");
+        JLabel namelb= new JLabel("Person Name:-" );
+        JTextField nametf= new JTextField();
+        JLabel emaillb= new JLabel("EMAIL ID:-" );
+        JTextField emailtf= new JTextField();
+        JLabel mobilelb= new JLabel("Mobile NO:-" );
+        JTextField mobiletf= new JTextField();
+        JLabel classTypelb= new JLabel("Select Class:-" );
+        JTextField classtf= new JTextField();
+        JLabel sourcelb= new JLabel("From:-" );
+        JTextField sourcetf= new JTextField();
+        JLabel destilb= new JLabel("To:-" );
+        JTextField destitf= new JTextField();
+        JLabel datelb= new JLabel("Date of Journey:-" );
+        JTextField datetf= new JTextField();
+        JLabel paymentlb= new JLabel("Payment:-" );
+        JTextField paymenttf= new JTextField();
+        JLabel ticketIdlb= new JLabel();
+        JButton bookNowBtn= new JButton("BOOK NOW");
+        JButton clearBtn= new JButton("CLEAR");
+        JButton closeBtn= new JButton("EXIT");
+        //to set size and position of components in frame
+        namelb.setBounds(40,40,150,40);
+        nametf.setBounds(160,40,200,30);
+
+        emaillb.setBounds(40,90,150,40);
+        emailtf.setBounds(160,90,200,30);
+
+        mobilelb.setBounds(40,140,150,40);
+        mobiletf.setBounds(160,140,200,30);
+
+        classTypelb.setBounds(40,190,150,40);
+        classtf.setBounds(160,190,200,30);
+
+        sourcelb.setBounds(420,40,150,40);
+        sourcetf.setBounds(540,40,200,30);
+
+        destilb.setBounds(420,90,150,40);
+        destitf.setBounds(540,90,200,30);
+
+        datelb.setBounds(420,140,150,40);
+        datetf.setBounds(540,140,200,30);
+
+        paymentlb.setBounds(420,190,150,40);
+        paymenttf.setBounds(540,190,200,30);
+
+        clearBtn.setBounds(100,250,100,25);
+
+        bookNowBtn.setBounds(270,250,150,25);
+
+        closeBtn.setBounds(500,250,100,25);
+
+        ticketIdlb.setBounds(100,300,400,30);
+
+
+        //to attach the components in frame
+        frame.add(namelb);
+        frame.add(nametf);
+        frame.add(emaillb);
+        frame.add(emailtf);
+        frame.add(mobilelb);
+        frame.add(mobiletf);
+        frame.add(classTypelb);
+        frame.add(classtf);
+        frame.add(sourcelb);
+        frame.add(sourcetf);
+        frame.add(destilb);
+        frame.add(destitf);
+        frame.add(datelb);
+        frame.add(datetf);
+        frame.add(paymentlb);
+        frame.add(paymenttf);
+        frame.add(clearBtn);
+        frame.add(bookNowBtn);
+        frame.add(closeBtn);
+        frame.add(ticketIdlb);
+
+
+
+        frame.setLayout(null);
+        frame.setResizable(false);
+        frame.setSize(800,500);
+        frame.setVisible(true);
+
+        //to perform click action on the clear button
+        clearBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //to clear the form
+                nametf.setText("");
+                emailtf.setText("");
+                mobiletf.setText("");
+                classtf.setText("");
+                sourcetf.setText("");
+                destitf.setText("");
+                datetf.setText("");
+                paymenttf.setText("");
+            }
+        });
+        closeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
+        bookNowBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (nametf.getText().toString().isEmpty() ||
+                        emailtf.getText().toString().isEmpty() ||
+                        mobiletf.getText().toString().isEmpty() ||
+                        classtf.getText().toString().isEmpty() ||
+                        sourcetf.getText().toString().isEmpty() ||
+                        destitf.getText().toString().isEmpty() ||
+                        datetf.getText().toString().isEmpty() ||
+                        paymenttf.getText().toString().isEmpty())
+                {
+                    ticketIdlb.setText("Please fill the complete details");
+                }
+                else {
+                    Random randomId = new Random();
+                    int ticketId = randomId.nextInt(999999);
+                    ticketIdlb.setText("Your Ticket is successfully booked and ticket id : " + ticketId);
+                }
+            }
+        });
+
+    }
+}
